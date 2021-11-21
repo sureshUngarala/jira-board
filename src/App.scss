@@ -1,0 +1,44 @@
+.App {
+  padding: 2rem;
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  .column-headers,
+  .user-content,
+  .user-content .tasksPerType {
+    display: flex;
+  }
+
+  .column-headers,
+  .tasksPerType {
+    gap: 2rem;
+    & > * {
+      flex-grow: 1;
+      flex-basis: 0;
+    }
+  }
+  .column-header {
+    flex-grow: 1;
+    flex-basis: 0;
+    background-color: #f4f5f7;
+    color: rgba(0, 0, 0, 0.7);
+    border-radius: 4px;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    padding-left: 1rem;
+  }
+
+  .user-content {
+    flex-direction: column;
+
+    .tasksPerType > li {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      min-height: 110px;
+      background-color: #f4f5f7;
+      padding: 5px;
+    }
+  }
+}

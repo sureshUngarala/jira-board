@@ -1,0 +1,13 @@
+.save {
+  background-color: #3063f9;
+  border-radius: 4px;
+  border: 1px solid lightgrey;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: white;
+  width: 100px;
+  height: 40px;
+  &:hover {
+    background-color: #587ceb;
+  }
+}

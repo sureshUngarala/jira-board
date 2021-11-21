@@ -1,0 +1,13 @@
+.close {
+  background-color: white;
+  border: 0;
+  padding: 0.35rem;
+  cursor: pointer;
+  img {
+    width: 24px;
+    height: 24px;
+  }
+  &:hover {
+    background-color: #fafafa;
+  }
+}
