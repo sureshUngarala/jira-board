@@ -1,7 +1,8 @@
-import { useState } from "react";
 import PropTypes from "prop-types";
+import FormField from "../FormField/FormField";
 import styles from "./Form.module.scss";
 import { appData } from "../../utils/data";
+import DropDown from "../FormField/DropDown/DropDown";
 
 const Form = ({ editing, task, updateTaskProp }) => {
   const {
@@ -17,17 +18,15 @@ const Form = ({ editing, task, updateTaskProp }) => {
   return (
     <form className={styles.form}>
       <aside>
-        <label className={styles.title}>
-          <span>Title</span>
+        <FormField className={styles.title} title="Title">
           <input
             type="text"
             value={title}
             disabled={!editing}
             onChange={({ target: { value } }) => updateTaskProp("title", value)}
           />
-        </label>
-        <label className={styles.description}>
-          <span>Description</span>
+        </FormField>
+        <FormField className={styles.description} title="Description">
           <textarea
             type="text"
             value={description}
@@ -36,70 +35,49 @@ const Form = ({ editing, task, updateTaskProp }) => {
               updateTaskProp("description", value)
             }
           />
-        </label>
+        </FormField>
       </aside>
       <aside>
-        <label className={styles.status}>
-          <span>Status</span>
-          <select
+        <FormField title="Status">
+          <DropDown
             defaultValue={status}
             disabled={!editing}
-            onChange={({ target: { value } }) =>
-              updateTaskProp("status", value)
-            }
-          >
-            {COLUMNS.map((column) => (
-              <option key={column.id} value={column.id}>
-                {column.name}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label className={styles.assignee}>
-          <span>Assignee</span>
-          <select
+            fieldKey="status"
+            values={COLUMNS}
+            dataKey="id"
+            onChange={updateTaskProp}
+          />
+        </FormField>
+        <FormField title="Assignee">
+          <DropDown
             defaultValue={USERS.find((user) => user.id === assignee)?.name}
             disabled={!editing}
-            onChange={({ target: { value } }) =>
-              updateTaskProp("assignee", value)
-            }
-          >
-            {USERS.map((user) => (
-              <option key={user.id} value={user.id}>
-                {user.name}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label className={styles.priority}>
-          <span>Priority</span>
-          <select
+            fieldKey="assignee"
+            values={USERS}
+            dataKey="id"
+            onChange={updateTaskProp}
+          />
+        </FormField>
+        <FormField title="Priority">
+          <DropDown
             defaultValue={priority}
-            className={styles.priority}
             disabled={!editing}
-            onChange={({ target: { value } }) =>
-              updateTaskProp("priority", value)
-            }
-          >
-            {PRIORITIES.map((priority) => (
-              <option key={priority} value={priority}>
-                {priority}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label className={styles.createdOn}>
-          <span>Created On</span>
+            fieldKey="priority"
+            values={PRIORITIES}
+            dataKey=""
+            onChange={updateTaskProp}
+          />
+        </FormField>
+        <FormField title="Created On" className={styles.createdOn}>
           <span disabled={!editing}>
             {(created_at ? new Date(created_at) : new Date()).toDateString()}
           </span>
-        </label>
-        <label className={styles.updatedOn}>
-          <span>Updated On</span>
+        </FormField>
+        <FormField title="Updated On" className={styles.updatedOn}>
           <span disabled={!editing}>
             {(updated_at ? new Date(updated_at) : new Date()).toDateString()}
           </span>
-        </label>
+        </FormField>
       </aside>
     </form>
   );
