@@ -25,15 +25,18 @@ export const getTasksPerUser = () => {
 };
 
 export const createOrUpdateTask = (taskObj) => {
-  const { COLUMNS, getTasks, updateTasks } = appData;
+  const { COLUMNS, getTasks, updateTasks, USERS } = appData;
   if (!taskObj.id) {
     taskObj.id = randomID(7);
     taskObj.created_at = new Date().getTime();
     taskObj.updated_at = new Date().getTime();
+    if (!taskObj.assignee) {
+      taskObj.assignee = USERS[0].id;
+    }
     updateTasks([...getTasks(), taskObj]);
-    COLUMNS.find((column) => column.id === taskObj.status).tasks.push(
-      taskObj.id
-    );
+    COLUMNS.find(
+      (column) => column.id === (taskObj.status || COLUMNS[0].id)
+    ).tasks.push(taskObj.id);
   } else {
     const tasks = COLUMNS.find((column) => column.id === taskObj.status).tasks;
     if (tasks.indexOf(taskObj.id) === -1) {

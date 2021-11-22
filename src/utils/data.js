@@ -92,7 +92,7 @@ export const appData = (function () {
     title: "",
     description: "",
     assignee: "",
-    priority: "",
+    priority: "p4",
     created_at: 0,
     updated_at: 0,
   };
