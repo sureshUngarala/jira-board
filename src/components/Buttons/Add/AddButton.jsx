@@ -4,7 +4,7 @@ import styles from "./AddButton.module.scss";
 
 const AddButton = ({ onClick }) => {
   return (
-    <button className={styles.add} onClick={onClick}>
+    <button className={styles.add} onClick={onClick} aria-label="Add Task">
       + Create New
     </button>
   );

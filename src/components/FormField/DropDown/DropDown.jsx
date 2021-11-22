@@ -25,7 +25,7 @@ const DropDown = ({
 );
 
 DropDown.propTypes = {
-  defaultValue: PropTypes.string.isRequired,
+  defaultValue: PropTypes.string,
   disabled: PropTypes.bool,
   fieldKey: PropTypes.string.isRequired,
   onChange: PropTypes.func,

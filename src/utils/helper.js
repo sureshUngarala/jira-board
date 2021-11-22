@@ -35,6 +35,14 @@ export const createOrUpdateTask = (taskObj) => {
       taskObj.id
     );
   } else {
+    const tasks = COLUMNS.find((column) => column.id === taskObj.status).tasks;
+    if (tasks.indexOf(taskObj.id) === -1) {
+      const prevColumn = COLUMNS.find(
+        (column) => column.tasks.indexOf(taskObj.id) > -1
+      );
+      prevColumn.tasks.splice(prevColumn.tasks.indexOf(taskObj.id), 1);
+      tasks.push(taskObj.id);
+    }
     return updateTasks(
       getTasks().reduce((acc, task) => {
         if (task.id === taskObj.id) {

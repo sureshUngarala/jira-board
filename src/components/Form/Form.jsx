@@ -50,7 +50,7 @@ const Form = ({ editing, task, updateTaskProp }) => {
         </FormField>
         <FormField title="Assignee">
           <DropDown
-            defaultValue={USERS.find((user) => user.id === assignee)?.name}
+            defaultValue={assignee}
             disabled={!editing}
             fieldKey="assignee"
             values={USERS}

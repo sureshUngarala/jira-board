@@ -16,7 +16,7 @@ const Modal = ({ canEdit, task, newTask, onClose, onSubmit }) => {
 
   return (
     <div className={styles.modal}>
-      <section className={styles.modalContent}>
+      <section className={styles.modalContent} aria-modal={true}>
         <section className={styles.header}>
           {!newTask && canEdit && (
             <EditButton onClick={() => isEditing(true)} />

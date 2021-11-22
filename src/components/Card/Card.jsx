@@ -5,14 +5,23 @@ import styles from "./Card.module.scss";
 
 const Card = ({ task, assignee, onClick }) => {
   return (
-    <div className={styles.card} onClick={onClick}>
+    <div
+      className={styles.card}
+      onClick={onClick}
+      onKeyUp={({ keyCode }) => {
+        if (keyCode === 13 || keyCode === 32) onClick();
+      }}
+      tabIndex={0}
+      aria-label={task.title}
+      role="button"
+    >
       <section className={styles.title}>{task.title}</section>
       <section className={styles.info}>
         <div className={styles.priority}>{task.priority}</div>
         <div className={styles.avatar}>
           <div className={styles.id}>{task.id}</div>
           <div className={styles.img}>
-            {<img src={User} title={assignee} alt="User" />}
+            <img src={User} title={assignee} alt="User" />
           </div>
         </div>
       </section>

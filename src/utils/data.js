@@ -18,7 +18,7 @@ export const appData = (function () {
     {
       id: "in-review",
       name: "In Review",
-      tasks: ["xchjkfdh"],
+      tasks: ["erknweruo"],
     },
     {
       id: "completed",
@@ -72,6 +72,15 @@ export const appData = (function () {
       title: "JIRA board",
       description: "sample description 3",
       assignee: "chafike",
+      priority: "p3",
+      created_at: 16370988869287,
+      updated_at: 1637098899287,
+    },
+    {
+      id: "erknweruo",
+      title: "Task in review",
+      description: "sample description 4",
+      assignee: "rhpatt",
       priority: "p3",
       created_at: 16370988869287,
       updated_at: 1637098899287,
