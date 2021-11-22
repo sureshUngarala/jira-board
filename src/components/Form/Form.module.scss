@@ -1,0 +1,61 @@
+.form {
+  display: flex;
+  width: 100%;
+  margin-top: 0.5rem;
+  aside,
+  aside label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+  aside {
+    width: 100%;
+    padding: 0.5rem;
+    background-color: #f5f5f5;
+    border-radius: 0.5rem;
+    margin-right: 0.5rem;
+    &:nth-child(1) {
+      flex-basis: 60%;
+    }
+    &:nth-child(2) {
+      flex-basis: 40%;
+    }
+
+    label span {
+      font-weight: 500;
+      padding: 0.5rem 0px;
+      opacity: 0.8;
+    }
+
+    .title,
+    .description {
+      width: 100%;
+    }
+
+    .title input,
+    .description textarea,
+    select {
+      padding: 0.5rem;
+      border: 1px solid lightgray;
+      border-radius: 5px;
+      background-color: white;
+      color: #333;
+      font-family: inherit;
+    }
+
+    .description textarea {
+      min-height: 250px;
+    }
+
+    .createdOn,
+    .updatedOn {
+      span:nth-child(2) {
+        font-size: 0.85rem;
+      }
+    }
+
+    *:disabled {
+      cursor: not-allowed;
+    }
+  }
+}

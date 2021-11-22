@@ -3,14 +3,14 @@ import PropTypes from "prop-types";
 import User from "../../assets/user.png";
 import styles from "./Card.module.scss";
 
-const Card = ({ id, title, priority, assignee }) => {
+const Card = ({ task, assignee, onClick }) => {
   return (
-    <div className={styles.card}>
-      <section className={styles.title}>{title}</section>
+    <div className={styles.card} onClick={onClick}>
+      <section className={styles.title}>{task.title}</section>
       <section className={styles.info}>
-        <div className={styles.priority}>{priority}</div>
+        <div className={styles.priority}>{task.priority}</div>
         <div className={styles.avatar}>
-          <div className={styles.id}>{id}</div>
+          <div className={styles.id}>{task.id}</div>
           <div className={styles.img}>
             {<img src={User} title={assignee} alt="User" />}
           </div>
@@ -21,10 +21,17 @@ const Card = ({ id, title, priority, assignee }) => {
 };
 
 Card.propTypes = {
-  id: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  priority: PropTypes.string.isRequired,
-  assignee: PropTypes.string.isRequired,
+  task: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    assignee: PropTypes.string.isRequired,
+    priority: PropTypes.string.isRequired,
+    created_at: PropTypes.number.isRequired,
+    updated_at: PropTypes.number.isRequired,
+  }),
+  assignee: PropTypes.string,
+  onClick: PropTypes.func,
 };
 
 export default Card;

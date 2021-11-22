@@ -8,10 +8,10 @@
   right: 0;
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.5);
+
   .modalContent {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     width: 50%;
     overflow: hidden;
     background-color: white;
@@ -24,8 +24,9 @@
     }
 
     .footer {
-      display: flex;
-      justify-content: flex-end;
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
     }
   }
 }

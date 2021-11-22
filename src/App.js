@@ -2,22 +2,53 @@ import { useEffect, useState } from "react";
 import AddButton from "./components/Buttons/Add/AddButton.jsx";
 import Card from "./components/Card/Card.jsx";
 import Modal from "./components/Modal/Modal";
-import { COLUMNS, USERS } from "./utils/constants.js";
-import { getTasksPerUser } from "./utils/helper.js";
+import { appData } from "./utils/data.js";
+import { getTasksPerUser, createOrUpdateTask } from "./utils/helper.js";
 import "./App.scss";
 
 function App() {
+  const { COLUMNS, getTasks, NEW_TASK, USERS } = appData;
   const [tasksPerUser, setTasksPerUser] = useState({});
+  const [modalProps, setModalProps] = useState({
+    showModal: false,
+    task: getTasks()[0],
+    canEdit: true,
+    newTask: false,
+  });
+
+  const closeModal = () => {
+    setModalProps({ ...modalProps, showModal: false });
+  };
+
+  const updateTasksData = (newTask) => {
+    createOrUpdateTask(newTask);
+    setTasksPerUser(getTasksPerUser());
+    closeModal();
+  };
+
   useEffect(() => {
     setTasksPerUser(getTasksPerUser());
   }, []);
 
   return (
     <div className="App">
-      <Modal />
+      {modalProps.showModal && (
+        <Modal
+          canEdit={modalProps.canEdit}
+          task={modalProps.task}
+          onClose={closeModal}
+          newTask={modalProps.newTask}
+          onSubmit={updateTasksData}
+        />
+      )}
       <AddButton
         onClick={() => {
-          console.log(console.log("Clicked Add button"));
+          setModalProps({
+            showModal: true,
+            task: NEW_TASK,
+            canEdit: true,
+            newTask: true,
+          });
         }}
       />
       <div className="columns">
@@ -37,11 +68,17 @@ function App() {
                   <li key={`${user.id}#${typeIndex}`}>
                     {tasks.map((task) => (
                       <Card
-                        id={task.id}
-                        title={task.title}
-                        priority={task.priority}
+                        task={task}
                         assignee={user.name}
                         key={task.id}
+                        onClick={() => {
+                          setModalProps({
+                            showModal: true,
+                            task: task,
+                            canEdit: true,
+                            newTask: false,
+                          });
+                        }}
                       />
                     ))}
                   </li>
