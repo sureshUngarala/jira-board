@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import User from "../../assets/user.png";
+import User from "../../../assets/user.png";
 import styles from "./Card.module.scss";
 
 const Card = ({ task, assignee, onClick }) => {

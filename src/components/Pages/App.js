@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import AddButton from "./components/Buttons/Add/AddButton.jsx";
-import Card from "./components/Card/Card.jsx";
-import Modal from "./components/Modal/Modal";
-import { appData } from "./utils/data.js";
-import { getTasksPerUser, createOrUpdateTask } from "./utils/helper.js";
+import AddButton from "../Atoms/Add/AddButton.jsx";
+import Card from "../Molecules/Card/Card.jsx";
+import Modal from "../Templates/Modal/Modal";
+import { appData } from "../../utils/data.js";
+import { getTasksPerUser, createOrUpdateTask } from "../../utils/helper.js";
 import "./App.scss";
 
 function App() {
@@ -74,7 +74,7 @@ function App() {
         <ul className="users">
           {USERS.map((user) => (
             <li key={user.id} className="user-content">
-              {user.name}
+              <span>{user.name}</span>
               <ul key={user.name} className="tasksPerType">
                 {listTasks(user)}
               </ul>

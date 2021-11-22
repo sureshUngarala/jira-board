@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
-import FormField from "../FormField/FormField";
+import FormField from "../../Molecules/FormField/FormField";
 import styles from "./Form.module.scss";
-import { appData } from "../../utils/data";
-import DropDown from "../FormField/DropDown/DropDown";
+import { appData } from "../../../utils/data";
+import DropDown from "../../Molecules/FormField/DropDown/DropDown";
 
 const Form = ({ editing, task, updateTaskProp }) => {
   const {

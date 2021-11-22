@@ -1,9 +1,9 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import EditButton from "../Buttons/Edit/EditButton";
-import SubmitButton from "../Buttons/Submit/SubmitButton";
-import CloseButton from "../Buttons/Close/CloseButton";
-import Form from "../Form/Form";
+import EditButton from "../../Atoms/Edit/EditButton";
+import SubmitButton from "../../Atoms/Submit/SubmitButton";
+import CloseButton from "../../Atoms/Close/CloseButton";
+import Form from "../../Organisms/Form/Form";
 import styles from "./Modal.module.scss";
 
 const Modal = ({ canEdit, task, newTask, onClose, onSubmit }) => {
