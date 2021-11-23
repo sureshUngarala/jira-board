@@ -68,3 +68,29 @@ export const randomID = (length) => {
   }
   return id;
 };
+
+export const tasksSummary = (tasks, userName) => {
+  const { COLUMNS } = appData;
+  const statuses = tasks?.reduce((acc, task, index) => {
+    const tasksCount = task.length;
+    if (tasksCount) {
+      acc.push(
+        `${tasksCount} ${tasksCount === 1 ? "task" : "tasks"} in ${
+          COLUMNS[index].name
+        } status`
+      );
+    }
+    return acc;
+  }, []);
+  const statusesCount = statuses?.length;
+  if (statusesCount) {
+    return `${userName} has ${
+      statusesCount > 1
+        ? `${statuses.slice(0, statusesCount - 1).join(", ")} and ${
+            statuses[statusesCount - 1]
+          }`
+        : statuses.join(", ")
+    }.`;
+  }
+  return `${userName} has no tasks assigned.`;
+};

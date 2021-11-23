@@ -8,7 +8,7 @@ export const appData = (function () {
     {
       id: "groomed",
       name: "Groomed",
-      tasks: [],
+      tasks: ["wriuwown"],
     },
     {
       id: "in-progress",
@@ -82,6 +82,15 @@ export const appData = (function () {
       description: "sample description 4",
       assignee: "rhpatt",
       priority: "p3",
+      created_at: 16370988869287,
+      updated_at: 1637098899287,
+    },
+    {
+      id: "wriuwown",
+      title: "Task to do",
+      description: "sample description 5",
+      assignee: "rhpatt",
+      priority: "p2",
       created_at: 16370988869287,
       updated_at: 1637098899287,
     },

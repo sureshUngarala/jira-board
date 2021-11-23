@@ -3,7 +3,11 @@ import Button from "../Atoms/Button/Button";
 import Card from "../Molecules/Card/Card.jsx";
 import Modal from "../Templates/Modal/Modal";
 import { appData } from "../../utils/data.js";
-import { getTasksPerUser, createOrUpdateTask } from "../../utils/helper.js";
+import {
+  getTasksPerUser,
+  createOrUpdateTask,
+  tasksSummary,
+} from "../../utils/helper.js";
 import "./App.scss";
 
 function App() {
@@ -75,13 +79,7 @@ function App() {
         </ul>
         <ul className="users">
           {USERS.map((user) => {
-            const tasksCount =
-              tasksPerUser[user.id]?.reduce((acc, tasks) => {
-                return acc + tasks.length;
-              }, 0) || 0;
-            const title = `${tasksCount} ${
-              tasksCount === 1 ? "task" : "tasks"
-            } assigned to ${user.name}`;
+            const title = tasksSummary(tasksPerUser[user.id], user.name);
             return (
               <li key={user.id} className="user-content">
                 <span aria-label={title} title={title} tabIndex={0}>
