@@ -15,7 +15,9 @@
 
   .title {
     font-weight: bold;
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 
   .info {
@@ -41,6 +43,27 @@
       img {
         width: 24px;
         height: 24px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 599px) {
+  .card {
+    min-height: 50px;
+    font-size: 0.85rem;
+    .info {
+      &,
+      & * {
+        // flex-direction: column;
+        flex-wrap: wrap;
+      }
+      .avatar {
+        gap: 0.5rem !important;
+        img {
+          width: 15px !important;
+          height: 15px !important;
+        }
       }
     }
   }

@@ -60,3 +60,36 @@
     }
   }
 }
+
+@media screen and (max-width: 599px) {
+  .App {
+    padding: 1rem;
+
+    .column-headers,
+    .tasksPerType {
+      gap: 0.5rem;
+    }
+
+    .column-header {
+      font-size: 0.85rem;
+      padding-left: 0.5rem;
+      height: 2rem;
+      line-height: 2rem;
+    }
+
+    .users {
+      gap: 0.5rem;
+    }
+    .column-headers,
+    .user-content {
+      width: max-content;
+    }
+    .tasksPerType {
+      margin-top: 0 !important;
+    }
+    .column-header,
+    .tasksPerType > * {
+      width: 100px;
+    }
+  }
+}
