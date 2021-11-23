@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import AddButton from "../Atoms/Add/AddButton.jsx";
+import Button from "../Atoms/Button/Button";
 import Card from "../Molecules/Card/Card.jsx";
 import Modal from "../Templates/Modal/Modal";
 import { appData } from "../../utils/data.js";
@@ -62,7 +62,9 @@ function App() {
 
   return (
     <div className="App">
-      <AddButton onClick={() => openModal(true)} />
+      <Button className="add" label="Add Task" onClick={() => openModal(true)}>
+        + Create New
+      </Button>
       <div className="columns">
         <ul className="column-headers">
           {COLUMNS.map((column) => (

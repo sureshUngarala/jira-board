@@ -1,8 +1,8 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import EditButton from "../../Atoms/Edit/EditButton";
-import SubmitButton from "../../Atoms/Submit/SubmitButton";
-import CloseButton from "../../Atoms/Close/CloseButton";
+import Button from "../../Atoms/Button/Button";
+import EditIcon from "../../../assets/edit.png";
+import CloseIcon from "../../../assets/close.png";
 import Form from "../../Organisms/Form/Form";
 import styles from "./Modal.module.scss";
 
@@ -19,9 +19,22 @@ const Modal = ({ canEdit, task, newTask, onClose, onSubmit }) => {
       <section className={styles.modalContent} aria-modal={true}>
         <section className={styles.header}>
           {!newTask && canEdit && (
-            <EditButton onClick={() => isEditing(true)} />
+            <Button
+              onClick={() => isEditing(true)}
+              className="edit"
+              label="Edit Task"
+            >
+              <img src={EditIcon} alt="Edit" />
+            </Button>
           )}
-          <CloseButton onClick={onClose} />
+          <Button
+            onClick={onClose}
+            className="close"
+            label="Close Modal"
+            focusOnLoad
+          >
+            <img src={CloseIcon} alt="Close" />
+          </Button>
         </section>
         <section className={styles.body}>
           <Form
@@ -31,7 +44,15 @@ const Modal = ({ canEdit, task, newTask, onClose, onSubmit }) => {
           />
         </section>
         <section className={styles.footer}>
-          {editing && <SubmitButton onClick={() => onSubmit(formData)} />}
+          {editing && (
+            <Button
+              className="save"
+              onClick={() => onSubmit(formData)}
+              label="Save Task"
+            >
+              Save
+            </Button>
+          )}
         </section>
       </section>
     </div>

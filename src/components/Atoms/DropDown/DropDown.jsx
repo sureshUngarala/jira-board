@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import styles from "./DropDown.module.scss";
 
 const DropDown = ({
   defaultValue,
@@ -11,6 +12,7 @@ const DropDown = ({
   <select
     defaultValue={defaultValue}
     disabled={disabled}
+    className={styles.dropDown}
     onChange={({ target: { value } }) => onChange(fieldKey, value)}
   >
     {values.map((value) => (

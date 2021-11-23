@@ -2,7 +2,9 @@ import PropTypes from "prop-types";
 import FormField from "../../Molecules/FormField/FormField";
 import styles from "./Form.module.scss";
 import { appData } from "../../../utils/data";
-import DropDown from "../../Molecules/FormField/DropDown/DropDown";
+import TextInput from "../../Atoms/TextInput/TextInput";
+import Textarea from "../../Atoms/Textarea/Textarea";
+import DropDown from "../../Atoms/DropDown/DropDown";
 
 const Form = ({ editing, task, updateTaskProp }) => {
   const {
@@ -19,21 +21,19 @@ const Form = ({ editing, task, updateTaskProp }) => {
     <form className={styles.form}>
       <aside>
         <FormField className={styles.title} title="Title">
-          <input
-            type="text"
+          <TextInput
             value={title}
             disabled={!editing}
-            onChange={({ target: { value } }) => updateTaskProp("title", value)}
+            dataKey="title"
+            onChange={updateTaskProp}
           />
         </FormField>
         <FormField className={styles.description} title="Description">
-          <textarea
-            type="text"
+          <Textarea
             value={description}
             disabled={!editing}
-            onChange={({ target: { value } }) =>
-              updateTaskProp("description", value)
-            }
+            dataKey="description"
+            onChange={updateTaskProp}
           />
         </FormField>
       </aside>
