@@ -14,6 +14,7 @@ const DropDown = ({
     disabled={disabled}
     className={styles.dropDown}
     onChange={({ target: { value } }) => onChange(fieldKey, value)}
+    aria-disabled={disabled}
   >
     {values.map((value) => (
       <option

@@ -74,14 +74,25 @@ function App() {
           ))}
         </ul>
         <ul className="users">
-          {USERS.map((user) => (
-            <li key={user.id} className="user-content">
-              <span>{user.name}</span>
-              <ul key={user.name} className="tasksPerType">
-                {listTasks(user)}
-              </ul>
-            </li>
-          ))}
+          {USERS.map((user) => {
+            const tasksCount =
+              tasksPerUser[user.id]?.reduce((acc, tasks) => {
+                return acc + tasks.length;
+              }, 0) || 0;
+            const title = `${tasksCount} ${
+              tasksCount === 1 ? "task" : "tasks"
+            } assigned to ${user.name}`;
+            return (
+              <li key={user.id} className="user-content">
+                <span aria-label={title} title={title} tabIndex={0}>
+                  {user.name}
+                </span>
+                <ul key={user.name} className="tasksPerType">
+                  {listTasks(user)}
+                </ul>
+              </li>
+            );
+          })}
         </ul>
       </div>
 

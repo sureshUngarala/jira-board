@@ -12,7 +12,7 @@ const Card = ({ task, assignee, onClick }) => {
         if (keyCode === 13 || keyCode === 32) onClick();
       }}
       tabIndex={0}
-      aria-label={task.title}
+      aria-label={`${task.title}. Click to view task details.`}
       role="button"
     >
       <section className={styles.title}>{task.title}</section>

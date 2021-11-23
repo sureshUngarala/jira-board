@@ -36,6 +36,11 @@
   .user-content {
     flex-direction: column;
 
+    span {
+      padding: 2px 0px;
+      border: 1px solid transparent;
+    }
+
     .tasksPerType {
       margin-top: 0.5rem;
       & > li {

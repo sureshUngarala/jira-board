@@ -8,6 +8,7 @@ const Textarea = ({ value, disabled, dataKey, onChange }) => (
     disabled={disabled}
     className={styles.textarea}
     onChange={({ target: { value } }) => onChange(dataKey, value)}
+    aria-disabled={disabled}
   />
 );
 Textarea.propTypes = {

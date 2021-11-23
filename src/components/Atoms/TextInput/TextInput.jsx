@@ -8,6 +8,7 @@ const TextInput = ({ value, disabled, dataKey, onChange }) => (
     disabled={disabled}
     className={styles.textInput}
     onChange={({ target: { value } }) => onChange(dataKey, value)}
+    aria-disabled={disabled}
   />
 );
 TextInput.propTypes = {
