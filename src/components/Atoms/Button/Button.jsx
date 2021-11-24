@@ -24,6 +24,7 @@ Button.propTypes = {
   className: PropTypes.string,
   onClick: PropTypes.func.isRequired,
   focusOnLoad: PropTypes.bool,
+  label: PropTypes.string,
 };
 
 export default Button;

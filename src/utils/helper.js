@@ -46,7 +46,7 @@ export const createOrUpdateTask = (taskObj) => {
       prevColumn.tasks.splice(prevColumn.tasks.indexOf(taskObj.id), 1);
       tasks.push(taskObj.id);
     }
-    return updateTasks(
+    updateTasks(
       getTasks().reduce((acc, task) => {
         if (task.id === taskObj.id) {
           acc.push(taskObj);
