@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import DropDown from "./Dropdown";
 
 it("renders without crashing", () => {
@@ -14,14 +14,21 @@ it("renders without crashing", () => {
       name: "name2",
     },
   ];
-  render(
+  let defaultValue = "2";
+  const { container } = render(
     <DropDown
       fieldKey={fieldKey}
       dataKey={dataKey}
       values={values}
-      defaultValue="2"
-      onChange={console.log}
+      defaultValue={defaultValue}
+      onChange={(dataKey, newVal) => {
+        defaultValue = newVal;
+      }}
     />
   );
   expect(screen.getByText("name2")).toBeInTheDocument();
+  fireEvent.change(container.querySelector("select"), {
+    target: { value: "1" },
+  });
+  expect(defaultValue).toEqual("1");
 });

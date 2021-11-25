@@ -1,4 +1,9 @@
-import { createOrUpdateTask, getTasksPerUser, tasksSummary } from "./helper";
+import {
+  createOrUpdateTask,
+  getTasksPerUser,
+  tasksSummary,
+  randomID,
+} from "./helper";
 import { appData } from "./data";
 
 it("Segregate tasks per user per task-type", () => {
@@ -26,9 +31,13 @@ it("Adds new task or updates existing task", () => {
   const task = { ...TASKS[0] };
   const title = "New Task from Jest";
   task["title"] = title;
-  task["status"] = "to-do";
+  task["status"] = "in-progress";
   createOrUpdateTask(NEW_TASK);
   expect(getTasks().length).toEqual(TASKS.length + 1);
   createOrUpdateTask(task);
   expect(getTasks()[0].title).toEqual(title);
+});
+
+it("Generates a random ID of specified length", () => {
+  expect(randomID(7).length).toEqual(7);
 });
