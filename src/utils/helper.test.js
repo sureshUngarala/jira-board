@@ -16,13 +16,13 @@ it("Segregate tasks per user per task-type", () => {
 });
 
 it("Provide task summary for a user", () => {
-  const { USERS } = appData;
+  const { USERS, COLUMNS } = appData;
   const result = getTasksPerUser();
   expect(tasksSummary(result[USERS[2].id], USERS[2].name)).toEqual(
     `${USERS[2].name} has no tasks assigned.`
   );
   expect(tasksSummary(result[USERS[1].id], USERS[1].name)).toEqual(
-    `${USERS[1].name} has 1 task in Groomed status and 1 task in In Review status.`
+    `${USERS[1].name} has 1 task in ${COLUMNS[1].name} status and 1 task in ${COLUMNS[2].name} status.`
   );
 });
 

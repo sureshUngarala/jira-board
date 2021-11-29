@@ -13,9 +13,13 @@
     background-color: #fafafa;
   }
 
+  .header {
+    font-size: 0.85rem;
+  }
+
   .title {
     font-weight: bold;
-    padding-bottom: 0.5rem;
+    padding: 0.5rem 0 1rem 0;
     text-overflow: ellipsis;
     overflow: hidden;
   }
@@ -26,6 +30,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      font-size: 0.85rem;
     }
     .priority {
       padding: 0.25rem;

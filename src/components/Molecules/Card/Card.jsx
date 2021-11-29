@@ -15,11 +15,13 @@ const Card = ({ task, assignee, onClick }) => {
       aria-label={`${task.title}. Click to view or edit task details.`}
       role="button"
     >
+      <section className={styles.header}>
+        Task ID: <i>{task.id}</i>
+      </section>
       <section className={styles.title}>{task.title}</section>
       <section className={styles.info}>
         <div className={styles.priority}>{task.priority}</div>
         <div className={styles.avatar}>
-          <div className={styles.id}>{task.id}</div>
           <div className={styles.img}>
             <img src={User} title={assignee} alt="User" />
           </div>
