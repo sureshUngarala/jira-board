@@ -22,7 +22,11 @@ it("Provide task summary for a user", () => {
     `${USERS[2].name} has no tasks assigned.`
   );
   expect(tasksSummary(result[USERS[1].id], USERS[1].name)).toEqual(
-    `${USERS[1].name} has 1 task in ${COLUMNS[1].name} status and 1 task in ${COLUMNS[2].name} status.`
+    `${USERS[1].name} has ${result[USERS[1].id][1].length} task in ${
+      COLUMNS[1].name
+    } status and ${result[USERS[1].id][3].length} task in ${
+      COLUMNS[3].name
+    } status.`
   );
 });
 
